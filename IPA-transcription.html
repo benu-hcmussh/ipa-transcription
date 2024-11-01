@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IPA Transcription Practice</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-image: url("background.png");
+            background-size: cover;
+        }
+        .container {
+            max-width: 700px;
+            width: 90%; /* Use percentage for flexible width */
+            background-color: #ffffff;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+        }
+        h1 {
+            font-size: 2rem; /* Use relative font size */
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        #questions-container {
+            max-height: 400px; /* Set maximum height for scrolling */
+            overflow-y: scroll; /* Enable vertical scrolling */
+            padding-right: 10px; /* Optional padding for scrollbar spacing */
+        }
+        .ipa-item {
+            margin-bottom: 20px;
+            padding: 20px;
+            border: 2px dotted black;
+        }
+        .ipa-content {
+            font-size: 1.25rem; /* Use relative font size */
+            color: #555;
+            margin-bottom: 10px;
+        }
+        .input-area {
+            width: 100%;
+            min-height: 100px;
+            padding: 10px;
+            font-size: 1rem; /* Use relative font size */
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+            resize: vertical;
+        }
+        .submit-button, .show-answer-button {
+            margin-top: 10px;
+            margin-bottom: 10px;
+            margin-right: 10px;
+            padding: 10px;
+            font-size: 1rem; /* Use relative font size */
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 25%;
+        }
+        .submit-button {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .show-answer-button {
+            background-color: #ff7043;
+            color: white;
+            margin-top: 5px;
+        }
+        .submit-button:hover {
+            background-color: #45a049;
+        }
+        .show-answer-button:hover {
+            background-color: #e64a19;
+        }
+        /* Overlay modal styling */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            width: 90%; /* Use percentage for flexible width */
+            max-width: 300px; /* Set a maximum width */
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .modal-content p {
+            font-size: 1.25rem; /* Use relative font size */
+            margin: 10px 0;
+        }
+        .ok-button {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #007BFF;
+            color: white;
+            font-size: 1rem; /* Use relative font size */
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100px;
+        }
+        .ok-button:hover {
+            background-color: #0056b3;
+        }
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.5rem; /* Adjust heading size for smaller screens */
+            }
+            .ipa-content {
+                font-size: 1.1rem; /* Adjust IPA content size */
+            }
+            .input-area, .submit-button, .show-answer-button, .ok-button {
+                font-size: 0.9rem; /* Smaller font size for buttons and input */
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>IPA Transcription Practice</h1>
+    <div id="questions-container"></div>
+</div>
+
+<!-- Modal for feedback -->
+<div id="modal-overlay" class="modal-overlay">
+    <div class="modal-content">
+        <p id="feedback-message"></p>
+        <button class="ok-button" onclick="closeModal()">OK</button>
+    </div>
+</div>
+
+<script>
+    // Array containing pairs of IPA transcriptions and their correct full sentences
+    const ipaQuestions = [
+        { ipa: "| aɪd laɪk tə stɑːt wɪð səm ˈʤenərəl ədˈvaɪs əˈbaʊt ˈbiːɪŋ ən əˈprentɪs. |", answer: "I'd like to start with some general advice about being an apprentice." },
+        { ipa: "| məʊst əv ju hæv ˈveri ˈlɪtl ɔː nəʊ ɪksˈpɪərɪəns əv ˈwɜːkɪŋ fər ə bɪg ˌɔːgənaɪˈzeɪʃən ənd ðə fɜːst wiːk ɔː səʊ meɪ bi kwaɪt ˈʧælɪnʤɪŋ. |", answer: "Most of you have very little or no experience of working for a big organization and the first week or so may be quite challenging." },
+        { ipa: "| ðə wɪl bi ə lɒt əv njuː ˌɪnfəˈmeɪʃən tə teɪk ɪn bət dəʊnt ˈwʌri tuː mʌʧ əˈbaʊt ˈtraɪɪŋ tə rɪˈmembər ˈevrɪθɪŋ. |", answer: "There will be a lot of new information to take in but don't worry too much about trying to remember everything." },
+        { ipa: "| ði ɪmˈpɔːtənt θɪŋ ɪz tə ʧek wɪð ˈsʌmwʌn ɪf ju ə nɒt ʃʊə wɒt tə duː. |", answer: "The important thing is to check with someone if you are not sure what to do."},
+        { ipa: "| jʊə hɪə tə lɜːn səʊ meɪk ðə məʊst əv ðæt ˌɒpəˈtjuːnɪti. |", answer: "You're here to learn so make the most of that opportunity."},
+        { ipa: "| juːl bi ˈspendɪŋ taɪm ɪn ˈdɪfrənt dɪˈpɑːtmənts ˈdjʊərɪŋ jə fɜːst wiːk səʊ meɪk ən ˈefət tə tɔːk tu əz ˈmeni ˈpiːpl əz ˈpɒsəbl əˈbaʊt ðeə wɜːk. |", answer: "You'll be spending time in different departments during your first week so make an effort to talk to as many people as possible about their work."},
+        { ipa: "| juːl meɪk səm njuː frendz ənd faɪnd aʊt lɒts əv ˈjuːsfl ˌɪnfəˈmeɪʃən. |", answer: "You'll make some new friends and find out lots of useful information."},
+        { ipa: "| ðɪs ˈpɜːsn wɪl bi ˈsʌmwʌn huːz ˈriːsntli kəmˈpliːtɪd ən əˈprentɪʃɪp ənd juːl miːt wɪð ðəm ɒn ə ˈwiːkli ˈbeɪsɪs. |", answer: "This person will be someone who's recently completed an apprenticeship and you'll meet with them on a weekly basis."},
+        { ipa: "| ðeɪl bi ˈɑːskɪŋ ju əˈbaʊt wɒt gəʊlz juːv əˈʧiːvd səʊ fɑː, əz wel əz ˈhelpɪŋ ju tu aɪˈdentɪfaɪ ˈeni ˈeərɪəz fər ɪmˈpruːvmənt. |", answer: "They'll be asking you about what goals you've achieved so far, as well as helping you to identify any areas for improvement."},
+        { ipa: "| ju kən ˈɔːlsəʊ dɪsˈkʌs jə mɔː ˈlɒŋtɜːm æmˈbɪʃnz wɪð ðəm əz wel. |", answer: "You can also discuss your more long-term ambitions with them as well."}
+    ];
+
+    // Function to shuffle the questions array
+    function shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+    }
+
+    // Function to load questions dynamically from the shuffled ipaQuestions array
+    function loadQuestions() {
+        const container = document.getElementById('questions-container');
+        
+        // Shuffle the questions array before displaying
+        shuffleArray(ipaQuestions);
+
+        ipaQuestions.forEach((question, index) => {
+            // Create a div for each question
+            const ipaItem = document.createElement('div');
+            ipaItem.classList.add('ipa-item');
+
+            // Display the IPA transcription
+            const ipaContent = document.createElement('div');
+            ipaContent.classList.add('ipa-content');
+            ipaContent.textContent = question.ipa;
+            ipaItem.appendChild(ipaContent);
+
+            // Add a text area for user to input the answer
+            const inputArea = document.createElement('textarea');
+            inputArea.classList.add('input-area');
+            inputArea.setAttribute('rows', '2');
+            inputArea.setAttribute('placeholder', 'Write the full sentence here...');
+            inputArea.setAttribute('data-index', index); // Store index for later retrieval
+            ipaItem.appendChild(inputArea);
+
+            // Add a submit button for each question
+            const submitButton = document.createElement('button');
+            submitButton.classList.add('submit-button');
+            submitButton.textContent = 'Submit';
+            submitButton.onclick = () => processAnswer(index, inputArea); // Pass index and input element
+            ipaItem.appendChild(submitButton);
+
+            // Add a show answer button for each question
+            const showAnswerButton = document.createElement('button');
+            showAnswerButton.classList.add('show-answer-button');
+            showAnswerButton.textContent = 'Show Answer';
+            showAnswerButton.onclick = () => showAnswer(index, inputArea); // Show answer in the text area
+            ipaItem.appendChild(showAnswerButton);
+
+            // Append each item to the main container
+            container.appendChild(ipaItem);
+        });
+    }
+
+    // Function to process and check an individual answer
+    function processAnswer(index, inputArea) {
+        const userAnswer = inputArea.value.trim();
+        const correctAnswer = ipaQuestions[index].answer;
+
+        // Show feedback in the modal overlay
+        const feedbackMessage = document.getElementById('feedback-message');
+        if (userAnswer.toLowerCase() === correctAnswer.toLowerCase()) {
+            feedbackMessage.textContent = "Correct!";
+            feedbackMessage.style.color = 'green';
+            inputArea.style.borderColor = 'green'; // Set border to green for correct answer
+        } else {
+            feedbackMessage.textContent = "Incorrect. Try again!";
+            feedbackMessage.style.color = 'red';
+            inputArea.style.borderColor = 'red'; // Set border to red for incorrect answer
+        }
+        // Display the modal overlay
+        document.getElementById('modal-overlay').style.display = 'flex';
+    }
+
+    // Function to show the correct answer in the input area
+    function showAnswer(index, inputArea) {
+        inputArea.value = ipaQuestions[index].answer; // Set input area value to correct answer
+    }
+
+    // Function to close the modal overlay
+    function closeModal() {
+        document.getElementById('modal-overlay').style.display = 'none';
+        const inputs = document.querySelectorAll('.input-area');
+        inputs.forEach(input => {
+            input.style.borderColor = ''; // Reset border color on modal close
+        });
+    }
+
+    // Load the questions on page load
+    window.onload = loadQuestions;
+</script>
+
+</body>
+</html>
