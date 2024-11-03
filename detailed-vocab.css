@@ -1,0 +1,121 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 60px 20px; /* Add top padding for navbar */
+    background-color: #f4f4f4;
+}
+
+.navbar {
+    position: absolute; /* Keep navbar styling */
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    background-color: #333; /* Dark background for navbar */
+    padding: 10px;
+    z-index: 1000;
+}
+
+.navbar a {
+    color: white; /* White text color */
+    padding: 14px 20px;
+    text-decoration: none;
+    text-align: center;
+    transition: background-color 0.3s; /* Smooth transition for hover */
+}
+
+.navbar a:hover {
+    background-color: #575757; /* Darker shade on hover */
+    border-radius: 4px;
+}
+
+.container {
+    max-width: 800px;
+    margin: auto;
+}
+
+.unit-block {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-decoration: none;
+    font-size: 1.5em;
+    font-weight: bold;
+    height: 150px;
+    border-radius: 10px;
+    overflow: hidden;
+    text-align: center;
+    margin: 10px 0;
+    background: linear-gradient(135deg, #6a11cb, #2575fc); /* Gradient background */
+    transition: transform 0.3s; /* Smooth transform effect */
+}
+
+.unit-block:hover {
+    transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+.word-entry {
+    background-color: #ffffff; /* White background for entries */
+    border: 1px solid #ccc; /* Light grey border */
+    border-radius: 5px;
+    margin: 10px 0;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+    transition: box-shadow 0.3s; /* Smooth transition for shadow */
+}
+
+.word-entry:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Darker shadow on hover */
+}
+
+.word-entry h3 {
+    margin: 0;
+    color: midnightblue; /* Dark grey for headings */
+}
+
+.word-entry p {
+    margin: 5px 0;
+    color: #666666; /* Medium grey for text */
+}
+
+button {
+    background-color: cadetblue; /* Green background */
+    color: white; /* White text */
+    border: none; /* No border */
+    padding: 10px 15px; /* Some padding */
+    text-align: center; /* Centered text */
+    text-decoration: none; /* No underline */
+    display: inline-block; /* Inline block */
+    font-size: 16px; /* Larger font size */
+    margin: 4px 2px; /* Margins */
+    cursor: pointer; /* Pointer cursor on hover */
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s; /* Smooth transition */
+    position: absolute;
+    right: 10px;
+}
+
+button:hover {
+    background-color: mediumpurple; /* Darker green on hover */
+}
+
+@media print {
+    .navbar, button {
+        display: none; /* Hide the navbar */
+    }
+
+    /* Add any other styles you want to control during printing */
+    body {
+        margin: 0; /* Remove default margin */
+    }
+    
+    .container {
+        width: 100%; /* Ensure the container uses full width */
+        padding: 20px; /* Add some padding if needed */
+        margin-top: -100px;
+    }
+}
+
