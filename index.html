@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Be Nu's Territory</title>
     <link rel="icon" href="logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="autido-player.css">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -209,7 +210,6 @@
     background-color: #0056b3; /* Darker button color on hover */
 }
 
-
     </style>
 </head>
 <body>
@@ -227,6 +227,16 @@
     <a href="IPA-transcription.html" class="cta-button">Start Practicing Now</a>
 </div>
 
+<div class="music-control">
+    <button id="audio-toggle" onclick="toggleAudio()">
+        <span id="audio-icon">🔊</span>
+    </button>
+    <div class="song-title">
+        <span id="song-name">All I want for Christmas is you - Mariah Carey</span>
+    </div>
+</div>
+<audio id="background-audio" src="song.mp3" autoplay loop></audio>
 
+<script type="text/javascript" src="script.js"></script>
 </body>
 </html>
