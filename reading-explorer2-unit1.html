@@ -1,11 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Unit 1 Vocabulary</title>
+    <link rel="icon" href="logo.png" type="image/x-icon">
     <link rel="stylesheet" href="detailed-vocab.css">
+    <link rel="stylesheet" href="nav-bar.css">
+    <link rel="stylesheet" href="go-back.css">
+    <script type="text/javascript" src="go-back.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
 </head>
+
 <body>
     <div class="navbar">
         <a href="index.html">Home</a>
@@ -13,32 +20,200 @@
         <a href="vocabulary.html">Vocabulary</a>
     </div>
 
-    <div class="container">
-        <button onclick="printPDF()" style="margin-bottom: 20px;">Print PDF</button>
+    <button onclick="goBack()" class="go-back-button">Go Back</button>
+
+    <div class="container" id="vocab-content">
+        <button onclick="downloadPDF()" style="margin-bottom: 20px;">Download PDF</button>
         <h1>Unit 1 Vocabulary</h1>
         <div class="dictionary">
             <div class="word-entry">
                 <h3>Addiction</h3>
                 <p><strong>IPA:</strong> /əˈdɪkʃn/</p>
                 <p><strong>Part of Speech:</strong> Noun (U or C)</p>
-                <p><strong>Definition:</strong> the condition of being unable to stop using or doing something as a habit, especially something harmful</p>
+                <p><strong>Definition:</strong> the condition of being unable to stop using or doing something as a
+                    habit, especially something harmful</p>
                 <p><strong>Example:</strong> He is now fighting his addiction <strong>to</strong> alcohol.</p>
             </div>
             <div class="word-entry">
                 <h3>Advertise</h3>
                 <p><strong>IPA:</strong> /ˈædvətaɪz/</p>
                 <p><strong>Part of Speech:</strong> Verb (I or T)</p>
-                <p><strong>Definition:</strong> to tell the public about a product or a service in order to encourage people to buy or to use it</p>
+                <p><strong>Definition:</strong> to tell the public about a product or a service in order to encourage
+                    people to buy or to use it</p>
                 <p><strong>Example:</strong> If you want to attract customers you need to advertise.</p>
             </div>
+            <div class="word-entry">
+                <h3>Battle</h3>
+                <p><strong>IPA:</strong> /ˈbætl/</p>
+                <p><strong>Part of Speech:</strong> Noun (C or U)</p>
+                <p><strong>Definition:</strong> a fight between armies, ships or planes, especially during a war; a violent fight between groups of people</p>
+                <p><strong>Example:</strong> It ended in a gun battle between police and drug smugglers.</p>
+            </div>
+            <div class="word-entry">
+                <h3>Cut down (on something)</h3>
+                <p><strong>IPA:</strong> </p>
+                <p><strong>Part of Speech:</strong> Phrasal verb</p>
+                <p><strong>Definition:</strong> ​to reduce the size, amount or number of something</p>
+                <p><strong>Example:</strong> The doctor told him to cut down on his drinking.</p>
+            </div>
+            <div class="word-entry">
+                <h3>Drug</h3>
+                <p><strong>IPA:</strong> /drʌɡ/</p>
+                <p><strong>Part of Speech:</strong> Noun (C)</p>
+                <p><strong>Definition:</strong> ​an illegal substance that some people smoke, inject, etc. for the physical and mental effects it has</p>
+                <p><strong>Example:</strong> He was charged with possessing drugs.</p>
+            </div>
+            <div class="word-entry">
+                <h3>Efficient</h3>
+                <p><strong>IPA:</strong> /ɪˈfɪʃnt/</p>
+                <p><strong>Part of Speech:</strong> Adj</p>
+                <p><strong>Definition:</strong> doing something in a good, careful and complete way with no waste of time, money or energy</p>
+                <p><strong>Example:</strong> We must meet members' needs in the most efficient and effective ways possible.</p>
+            </div>
+            <div class="word-entry">
+                <h3>Facility</h3>
+                <p><strong>IPA:</strong> /fəˈsɪləti/</p>
+                <p><strong>Part of Speech:</strong> Noun (plural)</p>
+                <p><strong>Definition:</strong> buildings, services, equipment, etc. that are provided for a particular purpose</p>
+                <p><strong>Example:</strong> The school is upgrading its outdoor play facilities.</p>
+            </div>
+            <div class="word-entry">
+                <h3>Obvious</h3>
+                <p><strong>IPA:</strong> /ˈɒbviəs/</p>
+                <p><strong>Part of Speech:</strong> Adj</p>
+                <p><strong>Definition:</strong> easy to see or understand</p>
+                <p><strong>Example:</strong> I know you don't like her but try not to make it so obvious.</p>
+            </div>
+            <div class="word-entry">
+                <h3>Recommend</h3>
+                <p><strong>IPA:</strong> /ˌrekəˈmend/</p>
+                <p><strong>Part of Speech:</strong> Verb</p>
+                <p><strong>Definition:</strong> to suggest that someone or something would be good or suitable for a particular purpose.</p>
+                <p><strong>Example:</strong> I highly recommend this book <strong>to</strong> anyone who loves mystery.</p>
+            </div>
+            
+            <div class="word-entry">
+                <h3>Store</h3>
+                <p><strong>IPA:</strong> /stɔːr/</p>
+                <p><strong>Part of Speech:</strong> Verb</p>
+                <p><strong>Definition:</strong> to keep something in a particular place until it is needed.</p>
+                <p><strong>Example:</strong> You can store these files <strong>in</strong> the archive.</p>
+            </div>
+            
+            <div class="word-entry">
+                <h3>Continent</h3>
+                <p><strong>IPA:</strong> /ˈkɒntɪnənt/</p>
+                <p><strong>Part of Speech:</strong> Noun (C)</p>
+                <p><strong>Definition:</strong> one of the large land masses of the earth, such as Africa, Asia, or Europe.</p>
+                <p><strong>Example:</strong> Africa is a continent rich in natural resources.</p>
+            </div>
+            
+            <div class="word-entry">
+                <h3>Crop</h3>
+                <p><strong>IPA:</strong> /krɒp/</p>
+                <p><strong>Part of Speech:</strong> Noun (C)</p>
+                <p><strong>Definition:</strong> a plant such as wheat, rice, or fruit that is grown by farmers and used as food.</p>
+                <p><strong>Example:</strong> This year’s corn crop was particularly abundant.</p>
+            </div>
+            
+            <div class="word-entry">
+                <h3>Flavor</h3>
+                <p><strong>IPA:</strong> /ˈfleɪvər/</p>
+                <p><strong>Part of Speech:</strong> Noun (C)</p>
+                <p><strong>Definition:</strong> the distinctive taste of a food or drink.</p>
+                <p><strong>Example:</strong> Chocolate flavor is popular in ice creams.</p>
+            </div>
+            
+            <div class="word-entry">
+                <h3>Historic</h3>
+                <p><strong>IPA:</strong> /hɪˈstɒrɪk/</p>
+                <p><strong>Part of Speech:</strong> Adjective</p>
+                <p><strong>Definition:</strong> having great and lasting importance.</p>
+                <p><strong>Example:</strong> The city has many historic buildings.</p>
+            </div>
+            
+            <div class="word-entry">
+                <h3>Produce</h3>
+                <p><strong>IPA:</strong> /ˈprɒdjuːs/</p>
+                <p><strong>Part of Speech:</strong> Noun (U)</p>
+                <p><strong>Definition:</strong> food or other things that have been grown or produced on a farm to be sold.</p>
+                <p><strong>Example:</strong> Fresh produce is sold daily at the market.</p>
+            </div>
+            
+            <div class="word-entry">
+                <h3>Quality</h3>
+                <p><strong>IPA:</strong> /ˈkwɒləti/</p>
+                <p><strong>Part of Speech:</strong> Noun (U or C)</p>
+                <p><strong>Definition:</strong> the standard of something as measured against other things of a similar kind.</p>
+                <p><strong>Example:</strong> This company is known for its high-quality products.</p>
+            </div>
+            
+            <div class="word-entry">
+                <h3>Scale</h3>
+                <p><strong>IPA:</strong> /skeɪl/</p>
+                <p><strong>Part of Speech:</strong> Noun (C)</p>
+                <p><strong>Definition:</strong> the size or level of something, especially when large.</p>
+                <p><strong>Example:</strong> The scale of the project is enormous.</p>
+            </div>
+            
+            <div class="word-entry">
+                <h3>Seed</h3>
+                <p><strong>IPA:</strong> /siːd/</p>
+                <p><strong>Part of Speech:</strong> Noun (C)</p>
+                <p><strong>Definition:</strong> a small, round, or oval object produced by a plant from which a new plant can grow.</p>
+                <p><strong>Example:</strong> Farmers are planting seeds for the next harvest.</p>
+            </div>
+            
+            <div class="word-entry">
+                <h3>Suggest</h3>
+                <p><strong>IPA:</strong> /səˈdʒest/</p>
+                <p><strong>Part of Speech:</strong> Verb</p>
+                <p><strong>Definition:</strong> to offer an idea or plan for someone to consider.</p>
+                <p><strong>Example:</strong> I suggest we leave early to avoid traffic.</p>
+            </div>
+            
+            <div class="word-entry">
+                <h3>Variety</h3>
+                <p><strong>IPA:</strong> /vəˈraɪəti/</p>
+                <p><strong>Part of Speech:</strong> Noun (U or C)</p>
+                <p><strong>Definition:</strong> a number of different types of the same thing.</p>
+                <p><strong>Example:</strong> The store has a variety of fresh fruits and vegetables.</p>
+            </div>            
             <!-- Add more words as needed -->
         </div>
     </div>
 
     <script>
-        function printPDF() {
-            window.print();
+        function downloadPDF() {
+            const element = document.getElementById('vocab-content');
+            const downloadButton = document.querySelector('button');
+
+            downloadButton.style.visibility = 'hidden';
+
+            const options = {
+                margin: 0.5,
+                filename: 'vocabulary-details.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2 },
+                jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
+            };
+
+            html2pdf()
+                .set(options)
+                .from(element)
+                .save()
+                .then(() => {
+                    // Show the button again after the PDF is downloaded
+                    downloadButton.style.visibility = 'visible';
+                })
+                .catch((error) => {
+                    console.error("Error generating PDF:", error);
+                    // Ensure button is visible if there was an error
+                    downloadButton.style.visibility = 'visible';
+                });
         }
+
     </script>
 </body>
+
 </html>

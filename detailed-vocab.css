@@ -5,34 +5,16 @@ body {
     background-color: #f4f4f4;
 }
 
-.navbar {
-    position: absolute; /* Keep navbar styling */
-    top: 0;
-    left: 0;
-    right: 0;
-    display: flex;
-    align-items: center;
-    background-color: #333; /* Dark background for navbar */
-    padding: 10px;
-    z-index: 1000;
-}
-
-.navbar a {
-    color: white; /* White text color */
-    padding: 14px 20px;
-    text-decoration: none;
-    text-align: center;
-    transition: background-color 0.3s; /* Smooth transition for hover */
-}
-
-.navbar a:hover {
-    background-color: #575757; /* Darker shade on hover */
-    border-radius: 4px;
-}
-
 .container {
     max-width: 800px;
     margin: auto;
+}
+
+.dictionary {
+    display: flex;
+    flex-wrap: wrap; /* Allows items to wrap to the next row */
+    gap: 20px; /* Space between each entry */
+    justify-content: center;
 }
 
 .unit-block {
@@ -58,13 +40,13 @@ body {
 }
 
 .word-entry {
-    background-color: #ffffff; /* White background for entries */
-    border: 1px solid #ccc; /* Light grey border */
-    border-radius: 5px;
-    margin: 10px 0;
+    flex: 1 1 calc(50% - 20px); /* Each item takes up 50% width minus the gap */
+    box-sizing: border-box; /* Ensures padding doesn't affect width */
+    background-color: #f9f9f9; /* Light background color */
+    border: 1px solid #ddd;
     padding: 15px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Shadow for depth */
-    transition: box-shadow 0.3s; /* Smooth transition for shadow */
+    margin: 10px 0;
+    border-radius: 8px;
 }
 
 .word-entry:hover {
@@ -100,22 +82,5 @@ button {
 
 button:hover {
     background-color: mediumpurple; /* Darker green on hover */
-}
-
-@media print {
-    .navbar, button {
-        display: none; /* Hide the navbar */
-    }
-
-    /* Add any other styles you want to control during printing */
-    body {
-        margin: 0; /* Remove default margin */
-    }
-    
-    .container {
-        width: 100%; /* Ensure the container uses full width */
-        padding: 20px; /* Add some padding if needed */
-        margin-top: -100px;
-    }
 }
 
