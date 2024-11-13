@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Container</title>
+    <link rel="stylesheet" href="nav-bar.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+        }
+        
+        /* Container for the videos */
+        .video-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            width: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        /* Styling individual video items */
+        .video-item {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px;
+        }
+
+        .video-item video {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .video-item h4 {
+            margin: 10px 0 5px;
+            font-size: 0.9rem;
+            color: #333;
+        }
+
+        .video-item p {
+            font-size: 0.9rem;
+            color: #666;
+            text-align: center;
+            padding: 0 10px;
+        }
+
+        /* Button styling */
+        .source-button {
+            margin-top: 10px;
+            padding: 8px 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: background-color 0.3s;
+        }
+
+        .source-button:hover {
+            background-color: #45a049;
+        }
+        
+        h1 {
+            margin-top: 150px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+<div class="navbar">
+    <a href="index.html">Home</a>
+    <a href="IPA-transcription.html">IPA Practice</a>
+    <a href="vocabulary.html">Vocabulary</a>
+    <a href="speaking-assignments.html">Speaking Assignments</a>
+</div>
+    <h1>Video Collection</h1>
+    <div class="video-container">
+        <!-- Video items -->
+        <div class="video-item">
+            <video controls src="video.mp4"></video>
+            <h4>Secret Wishes</h4>
+            <p>A neutral topic presenting the personal stance of the speaker.</p>
+            <a href="video.mp4" class="source-button" target="_blank">View Source</a>
+        </div>
+        <div class="video-item">
+            <video controls src="video.mp4"></video>
+            <h4>Changing Climates, Changing Minds</h4>
+            <p>A trendy phenomenon without a valid solution</p>
+            <a href="video.mp4" class="source-button" target="_blank">View Source</a>
+        </div>
+        <div class="video-item">
+            <video controls src="video.mp4"></video>
+            <h4>Unexpected Discovery</h4>
+            <p>A tedious topic that I personally believe offers no benefit to my life.</p>
+            <a href="video.mp4" class="source-button" target="_blank">View Source</a>
+        </div>
+        <div class="video-item">
+            <video controls src="video.mp4"></video>
+            <h4>The Business of Style</h4>
+            <p>A fashionable theme that has yet to be proven anachronistic.</p>
+            <a href="video.mp4" class="source-button" target="_blank">View Source</a>
+        </div>
+        <!-- More video items can be added here -->
+    </div>
+</body>
+</html>
